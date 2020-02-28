@@ -14,6 +14,15 @@
                 prop="Name"
                 label="name">
               </el-table-column>
+              <el-table-column
+                fixed="left"
+                label="action"
+                width="200">
+                <template slot-scope="scope">
+                  <el-button @click="handleClick" type="text" size="small"><i class="el-icon-edit"></i></el-button>
+                  <el-button type="text" size="small"><i class="el-icon-delete"></i></el-button>
+                </template>
+              </el-table-column>
           </el-table>
     </el-main>
     <el-footer>Copyright TuPT</el-footer>
@@ -33,7 +42,7 @@ export default {
   },
 
   // lấy dữ liệu khi component được tạo thành công
-  created () {
+  mounted () {
     axios.get(`http://localhost:1323/users`).then(response => {
       console.log(response.data)
       this.posts = response.data
